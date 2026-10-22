@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reeve's Cancer Support Program - Cancer Children Support</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #5b7c6c;
+      --primary-hover: #476355;
+      --secondary-color: #c48b59;
+      --secondary-hover: #a87244;
+      --text-dark: #2c3e35;
+      --text-light: #607268;
+      --bg-light: #fbf9f5;
+      --bg-white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+      --radius: 8px;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navigation */
+    header {
+      background-color: var(--bg-white);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo i {
+      color: var(--secondary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-cta {
+      background-color: var(--primary-color);
+      color: var(--bg-white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius);
+      transition: background-color 0.2s ease, transform 0.1s ease !important;
+    }
+
+    .nav-cta:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135sdeg, rgba(91, 124, 108, 0.92), rgba(115, 148, 131, 0.9)),
+                  url('https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: var(--bg-white);
+      text-align: center;
+      padding: 6rem 1.5rem 7rem;
+    }
+
+    .hero-container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+      max-width: 720px;
+      font-style: italic;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(196, 139, 89, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--bg-white);
+      border: 2px solid var(--bg-white);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Stats Section */
+    .impact-section {
+      max-width: var(--max-width);
+      margin: -3rem auto 4rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stats-card-grid {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item i {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-desc {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* About Section */
+    #about {
+      max-width: var(--max-width);
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-img-container img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-content h2 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-content p {
+      color: var(--text-light);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .about-list i {
+      color: var(--secondary-color);
+    }
+
+    /* Programs Section */
+    #programs {
+      max-width: var(--max-width);
+      margin: 5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--bg-white);
+      padding: 2.25rem 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(91, 124, 108, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary-color);
+    }
+
+    .card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* Donation Section */
+    #donate {
+      background-color: var(--bg-white);
+      max-width: 620px;
+      margin: 5rem auto;
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      border: 1px solid #eae6df;
+    }
+
+    .donation-type-toggle {
+      display: flex;
+      background-color: var(--bg-light);
+      padding: 0.25rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      gap: 0.25rem;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 0.6rem;
+      border: none;
+      background: none;
+      font-weight: 600;
+      border-radius: calc(var(--radius) - 2px);
+      cursor: pointer;
+      color: var(--text-light);
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn.active {
+      background-color: var(--bg-white);
+      color: var(--primary-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .preset-amounts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .amount-btn {
+      padding: 0.75rem;
+      border: 1px solid #e2ded6;
+      background-color: var(--bg-light);
+      font-weight: 700;
+      border-radius: var(--radius);
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .amount-btn:hover, .amount-btn.active {
+      border-color: var(--primary-color);
+      background-color: rgba(91, 124, 108, 0.08);
+      color: var(--primary-color);
+    }
+
+    #donation-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    #donation-form label {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    #donation-form input[type="number"],
+    #donation-form input[type="text"],
+    #donation-form input[type="email"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #e2ded6;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    #donation-form input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .input-icon-wrapper {
+      position: relative;
+    }
+
+    .input-icon-wrapper span {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .input-icon-wrapper input {
+      padding-left: 2rem !important;
+    }
+
+    #card-element {
+      padding: 0.85rem;
+      border: 1px solid #e2ded6;
+      border-radius: var(--radius);
+      background-color: #faf8f5;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #card-element input {
+      border: none !important;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .impact-callout {
+      background-color: #edf4f0;
+      border-left: 4px solid var(--primary-color);
+      padding: 0.85rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.9rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #submit-btn {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      border: none;
+      padding: 0.85rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #submit-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .toast-message {
+      display: none;
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+      background-color: #d8f3dc;
+      color: #1b4332;
+      border: 1px solid #b7e4c7;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #24332b;
+      color: #a3b1a8;
+      padding: 4rem 1.5rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    footer h3 {
+      color: var(--bg-white);
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+    }
+
+    footer p {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--bg-white);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #31473d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: background-color 0.2s;
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary-color);
+    }
+
+    .copyright {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid #31473d;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-white);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        box-shadow: var(--shadow-md);
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      #about {
+        grid-template-columns: 1fr;
+      }
+
+      #donate {
+        margin: 3rem 1rem;
+        padding: 1.5rem;
+      }
+
+      .preset-amounts {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <i class="fa-solid fa-ribbon"></i> Reeve's Cancer Support
+      </a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#donate" class="nav-cta">Donate Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <h1>CANCER CHILDREN SUPPORT PROGRAM</h1>
+      <p>"Every child deserves a chance to heal, hope, and dream again. Your generosity can help provide vital medical care, surgical support, and compassionate assistance to children facing cancer."</p>
+      <div class="hero-actions">
+        <a href="#donate" class="btn btn-primary"><i class="fa-solid fa-heart"></i> Donate Now</a>
+        <a href="#programs" class="btn btn-outline">Our Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <div class="impact-section">
+    <div class="stats-card-grid">
+      <div class="stat-item">
+        <i class="fa-solid fa-child-reaching"></i>
+        <div class="stat-value" data-target="320">0</div>
+        <div class="stat-desc">Children Supported</div>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-stethoscope"></i>
+        <div class="stat-value" data-target="1250">0</div>
+        <div class="stat-desc">Treatments Funded</div>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-face-smile"></i>
+        <div class="stat-value" data-target="95">0</div>
+        <div class="stat-desc">% Recovery & Smiles</div>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-hands-holding-child"></i>
+        <div class="stat-value" data-target="4500">0</div>
+        <div class="stat-desc">Family Care Hours</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about-img-container">
+      <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" alt="Pediatric care support">
+    </div>
+    <div class="about-content">
+      <h2>About Reeve's Support Program</h2>
+      <p>Reeve's Cancer Support Program is dedicated to transforming the journey of children battling cancer. We provide financial assistance for treatments, specialized surgical care, and psychological support for young patients and their families.</p>
+      <p>No family should have to fight pediatric cancer alone. We stand beside you with hope, compassion, and resources.</p>
+      <ul class="about-list">
+        <li><i class="fa-solid fa-circle-check"></i> Vital medical care and treatment subsidies</li>
+        <li><i class="fa-solid fa-circle-check"></i> Specialized pediatric surgical support</li>
+        <li><i class="fa-solid fa-circle-check"></i> Compassionate family counseling and comfort</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section id="programs">
+    <h2 class="section-title">Our Support Programs</h2>
+    <p class="section-sub">Comprehensive care and hope for children and families facing cancer.</p>
+    <div class="program-grid">
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-kit-medical"></i></div>
+        <h3>Medical Care Assistance</h3>
+        <p>Covering essential medication, chemotherapy sessions, and clinical treatments for children from underprivileged families.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-scalpel"></i></div>
+        <h3>Surgical Support</h3>
+        <p>Funding vital surgical procedures required during critical stages of pediatric cancer management.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-hands-holding"></i></div>
+        <h3>Family & Emotional Aid</h3>
+        <p>Offering counseling, guidance, and daily living support to help families stay strong throughout the healing journey.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+        <h3>Hope & Recovery Care</h3>
+        <p>Post-treatment wellness tracking, recreational workshops, and educational reintegration assistance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Section -->
+  <section id="donate">
+    <h2 class="section-title" style="margin-bottom: 0.5rem;">Make a Contribution</h2>
+    <p class="section-sub" style="margin-bottom: 1.5rem;">Your generosity makes a meaningful difference today.</p>
+
+    <div class="donation-type-toggle">
+      <button type="button" class="toggle-btn active" data-type="one-time">One-Time Gift</button>
+      <button type="button" class="toggle-btn" data-type="monthly">Monthly Support</button>
+    </div>
+
+    <div class="preset-amounts">
+      <button type="button" class="amount-btn" data-val="25">$25</button>
+      <button type="button" class="amount-btn active" data-val="50">$50</button>
+      <button type="button" class="amount-btn" data-val="100">$100</button>
+      <button type="button" class="amount-btn" data-val="250">$250</button>
+    </div>
+
+    <form id="donation-form">
+      <div class="form-group">
+        <label for="custom-amount">Donation Amount ($ USD)</label>
+        <div class="input-icon-wrapper">
+          <span>$</span>
+          <input type="number" id="custom-amount" min="1" value="50" required>
+        </div>
+      </div>
+
+      <div class="impact-callout" id="impactMessage">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span id="impactText">Your $50 donation helps provide specialized medication for a child in treatment!</span>
+      </div>
+
+      <div class="form-group">
+        <label for="donor-name">Full Name</label>
+        <input type="text" id="donor-name" placeholder="Jane Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="donor-email">Email Address</label>
+        <input type="email" id="donor-email" placeholder="jane@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Method</label>
+        <div id="card-
